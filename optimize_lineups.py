@@ -16,7 +16,10 @@ from urllib.request import Request, urlopen
 FORMATION = {"GK": 1, "DEF": 3, "MID": 4, "FWD": 3}
 API_URL = "https://www.base-xi.de/api/modal/player/{}"
 TELEGRAM_URL = "https://api.telegram.org/bot{}/sendMessage"
-CHAT_IDS = {"wiidipod": "66421324"}
+CHAT_IDS = {
+    "wiidipod": "66421324",
+    "A3rYs": "66421324",
+}
 
 
 def json_value(data, key):
@@ -145,7 +148,7 @@ def main():
     parser.add_argument("--dry-run", action="store_true", help="print messages instead of sending them")
     args = parser.parse_args()
     root = Path(__file__).resolve().parent
-    league_files = sorted((root / "Leagues").glob("*/*.txt"))
+    league_files = sorted((root / "Leagues").glob("*/*.csv"))
     if not league_files:
         raise FileNotFoundError("no squad files found in Leagues/*/")
     token = (root / "token").read_text(encoding="utf-8").strip()
