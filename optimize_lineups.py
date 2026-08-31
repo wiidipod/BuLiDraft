@@ -18,7 +18,7 @@ API_URL = "https://www.base-xi.de/api/modal/player/{}"
 TELEGRAM_URL = "https://api.telegram.org/bot{}/sendMessage"
 CHAT_IDS = {
     "wiidipod": "66421324",
-    "A3rYs": "66421324",
+    "A3rYs": "288114834",
 }
 
 
