@@ -18,7 +18,8 @@ API_URL = "https://www.base-xi.de/api/modal/player/{}"
 TELEGRAM_URL = "https://api.telegram.org/bot{}/sendMessage"
 CHAT_IDS = {
     "wiidipod": "66421324",
-    "A3rYs": "288114834",
+    # "A3rYs": "288114834",
+    "A3rYs": "66421324",
 }
 
 
@@ -112,7 +113,14 @@ def format_player(player, captain):
     name = html.escape(player["name"].split(maxsplit=1)[-1])
     if player["id"] == captain["id"]:
         name = f"<b><u>{name} C 👑</u></b>"
-    status = "✅" if player["available"] else "🚑"
+    status = "✅" if player["available"] else {
+        "1": "🏥",
+        "2": "🩹",
+        "4": "🏋️",
+        "8": "🟥",
+        "16": "🟥",
+        "32": "🟨"
+    }.get(str(player["status"]), "❎")
     value = human_format(player["value"]).removeprefix(" ")
     return f"<code>{player['position']:<3}</code> <code>{value}</code> {status} {name}"
 
