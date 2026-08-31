@@ -119,7 +119,7 @@ def format_player(player, captain):
         "8": "🟥",
         "16": "🟥",
         "32": "🟨"
-    }.get(str(player["status"]), "❎")
+    }.get(str(player["status"]), "❌")
     value = human_format(player["value"]).removeprefix(" ")
     return f"<code>{player['position']:<3}</code> <code>{value}</code> {status} {name}"
 
